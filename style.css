@@ -1,5 +1,5 @@
 /*
-Theme Name: testSite
+Theme Name: flame_news_post
 Author: Yale G
 Description: none
 Version: 0.0.1
@@ -122,4 +122,35 @@ body {
     background-size: 100%;
     background-position: center;
     margin: 20px auto;
+}
+.sidebar {
+    float: right;
+   width: 30%;
+   align-items: center;
+   padding: 0;
+   margin: 0;
+   text-align: left;
+   
+}
+.widget a {
+    text-decoration: none;
+    color: rgb(49, 49, 49);
+}
+.widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-inline-start: 0;
+
+}
+.widget h5 {
+    text-align: left;
+}
+.widget.widget_recent_entries ul li a{
+    font-weight: 600;
+}
+
+.main-content {
+    float: left;
+    width: 70%;
 }

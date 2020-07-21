@@ -4,8 +4,21 @@
 add_theme_support( 'title-tag' );
 
 
+// Sidebars
+function flame_news_post_widgets_init() {
+    register_sidebar( array(
+        'name'          => 'Primary Sidebar' ,       
+        'id'            => 'primary',
+        'description'   => 'this is a simple sidebar',
+        'before_widget' => '<div id="%1s" class="widget %2s">' ,
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="title-widget">',
+        'after_title'   => '</h5>'
+    ));
 
+}
 
+add_action( 'widgets_init', 'flame_news_post_widgets_init');
 
 // Menus.
 function register_menus() {
