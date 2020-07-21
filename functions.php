@@ -3,6 +3,10 @@
 // Theme supports.
 add_theme_support( 'title-tag' );
 
+
+
+
+
 // Menus.
 function register_menus() {
 
