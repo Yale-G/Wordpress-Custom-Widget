@@ -1,0 +1,123 @@
+/*
+Theme Name: testSite
+Author: Yale G
+Description: none
+Version: 0.0.1
+Tags: bootstrap
+
+
+*/
+
+body {
+    background-color: white;
+}
+.wrapper {
+    width: 850px;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    
+}
+.complementary-menu {
+    display: block;
+    overflow: hidden;
+}
+.complementary-menu a {
+    text-decoration: none;
+    font-size: 12px;
+    color: black;
+}
+.complementary-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.complementary-menu ul li {
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.complementary-menu ul li:last-child {
+    margin-right: 0;
+}
+.header-main {
+    justify-content: space-between;
+    align-items: center;
+}
+.h1 {
+    width: 250px;
+}
+.main-menu {
+    background-color: #f8f8f8;
+    text-align: center;
+    border-top: 3px solid coral ;
+
+}
+.main-menu a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 550;
+    padding: 8px 10px;
+    display: block;
+    text-transform: uppercase;
+    color: black;
+}
+.main-menu a:hover {
+    background-color: #cecece;
+}
+.main-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+
+}
+.main-menu ul li {
+    display: inline-block;
+    margin-right: 10px; 
+    
+}
+.main-menu ul li:last-child{
+    margin-right: 0;
+}
+.category-menu {
+    background-color: rgb(253, 158, 123);
+    text-align: center;
+}
+.category-menu a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 8px;
+    display: block;
+    text-transform: uppercase;
+    color: rgb(49, 49, 49);
+}
+.category-menu a:hover {
+    background-color: rgb(250, 128, 84);
+    color: whitesmoke;
+}
+.category-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+.category-menu ul li {
+    display: inline-block;
+    margin-right: 8px;
+}
+.category-menu ul li:last-child {
+    margin-right: 0;
+}
+.logo {
+    height: 50px;
+    width: 250px;
+    background-image: url('assets/images/flame_logo_X2.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    margin: 20px auto;
+}
