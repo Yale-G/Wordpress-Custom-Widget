@@ -25,6 +25,24 @@ Tags: bootstrap
     src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-XThin.ttf');
     src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-XthinIt.ttf'); */
 }
+@font-face {
+    font-family: pfdindisplaypro;
+    font-weight: bold;
+    /*src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Black.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-BlackIt.ttf');*/
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Bold.ttf');
+    /*src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-BoldItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Italic.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Light.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-LightItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Med.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-MedItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Reg.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Thin.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-ThinItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-XThin.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-XthinIt.ttf'); */
+}
 
 
 body {
@@ -77,7 +95,6 @@ body {
 .main-menu a {
     text-decoration: none;
     font-size: 14px;
-    font-weight: 550;
     padding: 8px 10px;
     display: block;
     text-transform: uppercase;
@@ -108,7 +125,6 @@ body {
 .category-menu a {
     text-decoration: none;
     font-size: 12px;
-    font-weight: 500;
     padding: 6px 8px;
     display: block;
     text-transform: uppercase;
@@ -144,12 +160,9 @@ body {
     float: right;
    width: 30%;
    align-items: center;
-   padding: 3px 8px;
+   padding: 0;
    margin: 0;
-   text-align: left;
-   box-shadow: 5px 8px 15px #888888;
-
-   
+   text-align: left;   
 }
 .widget a {
     text-decoration: none;
@@ -165,25 +178,51 @@ body {
 }
 .widget h5 {
     text-align: center;
+    color: grey;
 }
 .widget.widget_recent_entries ul li a{
-    font-weight: 600;
+    font-weight: bold;
+    width: 100%;
+   
 }
-
+#recent-posts-3 li {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 2px;
+}
 .main-content {
     float: left;
     width: 70%;
 }
-span.post-date {
+#recent-posts-3 span.post-date {
     font-size: 10px;
     color: grey;
+    width: 100%;
 }
-ul#menu-menu-2.menu li {
-    text-align: center;
+form#searchform.searchform {
+    
 }
+/* text box submit button */
 input#searchsubmit {
-    color: rgb(255, 112, 60);
-    border-color: rgb(250, 128, 84);
+    color: rgb(49, 49, 49);
+    border-color: rgb(49, 49, 49);
     border: 1px solid;
-    background-color: white;
+    background-color: rgb(253, 158, 123);
+    width: 100%;
+    margin: 5px;
+    padding: 5px 7px;
+    box-sizing: border-box;
+}
+/* text box search form */
+#search-3 #searchform input#s {
+    width: 100%;
+    margin: 5px;
+    border: 1px solid #eee;
+    padding: 5px 7px;
+    box-sizing: border-box;
+}
+/* text box 'search for' */
+label.screen-reader-text {
+    color: #464343;
+    font-size: 15px;
 }
