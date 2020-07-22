@@ -8,6 +8,23 @@ Tags: bootstrap
 
 
 */
+@font-face {
+    font-family: pfdindisplaypro;
+    /*src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Black.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-BlackIt.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Bold.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-BoldItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Italic.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Light.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-LightItal.ttf');*/
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Med.ttf');
+    /*src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-MedItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Reg.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-Thin.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-ThinItal.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-XThin.ttf');
+    src: url('assets/fonts/Din\ Display\ Pro/PFDinDisplayPro-XthinIt.ttf'); */
+}
 
 
 body {
@@ -16,7 +33,7 @@ body {
 .wrapper {
     width: 850px;
     margin: 0 auto;
-    font-family: 'Montserrat', sans-serif;
+    font-family:  pfdindisplaypro;
 }
 
 .header {
@@ -127,14 +144,17 @@ body {
     float: right;
    width: 30%;
    align-items: center;
-   padding: 0;
+   padding: 3px 8px;
    margin: 0;
    text-align: left;
+   box-shadow: 5px 8px 15px #888888;
+
    
 }
 .widget a {
     text-decoration: none;
     color: rgb(49, 49, 49);
+    font-size: 13px;
 }
 .widget ul {
     list-style: none;
@@ -144,7 +164,7 @@ body {
 
 }
 .widget h5 {
-    text-align: left;
+    text-align: center;
 }
 .widget.widget_recent_entries ul li a{
     font-weight: 600;
@@ -153,4 +173,8 @@ body {
 .main-content {
     float: left;
     width: 70%;
+}
+span.post-date {
+    font-size: 10px;
+    color: grey;
 }
