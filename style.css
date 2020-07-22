@@ -178,3 +178,12 @@ span.post-date {
     font-size: 10px;
     color: grey;
 }
+ul#menu-menu-2.menu li {
+    text-align: center;
+}
+input#searchsubmit {
+    color: rgb(255, 112, 60);
+    border-color: rgb(250, 128, 84);
+    border: 1px solid;
+    background-color: white;
+}
