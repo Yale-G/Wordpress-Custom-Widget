@@ -198,6 +198,7 @@ body {
     font-size: 10px;
     color: grey;
     width: 100%;
+    display: block;
 }
 form#searchform.searchform {
     
@@ -209,20 +210,20 @@ input#searchsubmit {
     border: 1px solid;
     background-color: rgb(253, 158, 123);
     width: 100%;
-    margin: 5px;
+    margin: 5px 0;
     padding: 5px 7px;
     box-sizing: border-box;
 }
 /* text box search form */
 #search-3 #searchform input#s {
     width: 100%;
-    margin: 5px;
+    margin: 5px 0;
     border: 1px solid #eee;
     padding: 5px 7px;
     box-sizing: border-box;
 }
 /* text box 'search for' */
-label.screen-reader-text {
+#search-3 #searchform label.screen-reader-text {
     color: #464343;
     font-size: 15px;
 }
