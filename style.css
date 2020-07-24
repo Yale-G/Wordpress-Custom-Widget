@@ -169,6 +169,9 @@ body {
     color: rgb(49, 49, 49);
     font-size: 13px;
 }
+.widget a:hover {
+    color: rgb(102, 102, 102);
+}
 .widget ul {
     list-style: none;
     padding: 0;
@@ -178,7 +181,9 @@ body {
 }
 .widget h5 {
     text-align: center;
-    color: grey;
+    color: rgb(49,49,49);
+    border-left: 2px solid rgb(250, 128, 84);
+    background-color: #f8f8f8;
 }
 .widget.widget_recent_entries ul li a{
     font-weight: bold;
