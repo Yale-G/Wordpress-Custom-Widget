@@ -20,9 +20,8 @@ class crp_widget extends WP_Widget {
     // Widget front-end
     public function widget( $args, $instance ) {
         $title = apply_filters( 'widget_title', $instance['title'] );
-        //var_dump($instance);
-        //var_dump($args);
 
+        
         // before & after widget args defined by the theme
         echo $args['before_widget'];
         if ( ! empty( $title ) ) {

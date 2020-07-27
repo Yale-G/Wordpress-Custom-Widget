@@ -11,15 +11,17 @@
 <body>
 <div class="wrapper">
     <div class="header">
-        <div class="complementary-menu">
-            <?php wp_nav_menu(array('theme_location' => 'complementary_menu')); ?>
+        <div class="header-top">
+            <div class="complementary-menu">
+                <?php wp_nav_menu(array('theme_location' => 'complementary_menu')); ?>
+            </div>
         </div>
         <div class="header-main">
             <div class="logo">
             
             </div>
             <div class="main-menu">
-            <?php wp_nav_menu(array('theme_location' => 'main_menu')); ?>
+                <?php wp_nav_menu(array('theme_location' => 'main_menu')); ?>
             </div>
             <div class="category-menu">
                 <?php wp_nav_menu(array('theme_location' => 'category_menu')); ?>
