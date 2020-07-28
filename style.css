@@ -168,6 +168,13 @@ body {
     text-decoration: none;
     color: rgb(49, 49, 49);
     font-size: 13px;
+    display: block;
+    margin: 10px 2px;
+
+}
+#crp_widget-2 .post-dates {
+    font-size: 10px;
+    color: grey;
 }
 .widget a:hover {
     color: rgb(102, 102, 102);

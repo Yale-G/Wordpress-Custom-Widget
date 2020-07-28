@@ -27,8 +27,24 @@ class crp_widget extends WP_Widget {
         if ( ! empty( $title ) ) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
-        // display output
-        echo 'Recent Posts should be printed here' ;
+
+        ?>
+
+        <!-- display output -->
+      <?php  if (have_posts()) : ?>
+           <?php while (have_posts()) : ?>
+                <?php the_post(); ?>
+                <?php if ( has_post_thumbnail() ) : ?>
+                    <?php the_post_thumbnail( 'thumbnail' ); ?>
+                <?php endif ?>
+                <a href="<?php the_permalink() ?>" rel="bookmark" title=" <?php the_title_attribute(); ?>">
+                <?php the_title(); ?></a>
+                <div class="post-dates">
+                    <?php the_time('F j, Y') ?>
+                </div>
+         <?php   endwhile; ?>
+       <?php endif; ?>
+        <?php 
         echo $args['after_widget'];
     }
 
