@@ -33,19 +33,28 @@ class crp_widget extends WP_Widget {
         <!-- Display Output -->
         <?php 
         // the custom query
-        $the_query = new WP_Query( $args ); ?>
+        $query_args = array( 'post_in',
+                             'posts_per_page' => '6',
+                             );
+        $the_query = new WP_Query( $query_args ); ?>
  
         <?php if ( $the_query->have_posts() ) : ?>
  
-        <!-- pagination here -->
+            <!-- pagination here -->
  
-        <!-- the loop -->
-        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <h2><?php the_title(); ?></h2>
-        <?php endwhile; ?>
-        <!-- end of the loop -->
+            <!-- the loop -->
+            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <?php if ( has_post_thumbnail() ) : the_post_thumbnail( 'thumbnail' ); ?>
+                <?php endif ?>
+                <a href="<?php the_permalink() ?>" rel="bookmark" title=" <?php the_title_attribute(); ?>">
+                <?php the_title(); ?></a>
+                <div class="post-dates">
+                    <?php the_time('F j, Y') ?>
+                </div>
+            <?php endwhile; ?>
+            <!-- end of the loop -->
  
-        <!-- pagination here -->
+            <!-- pagination here -->
  
         <?php wp_reset_postdata(); ?>
  
