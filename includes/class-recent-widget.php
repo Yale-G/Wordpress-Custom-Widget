@@ -33,13 +33,14 @@ class crp_widget extends WP_Widget {
         <!-- Display Output -->
         <?php 
         // the custom query
-        $query_args = array( 'post_in',
-                             'posts_per_page' => '6',
+        $query_args = array( 'cat'            => '22',
+                             'posts_per_page' => '3'
                              );
         $the_query = new WP_Query( $query_args ); ?>
  
         <?php if ( $the_query->have_posts() ) : ?>
- 
+           
+
             <!-- pagination here -->
  
             <!-- the loop -->
@@ -52,11 +53,12 @@ class crp_widget extends WP_Widget {
                     <?php the_time('F j, Y') ?>
                 </div>
             <?php endwhile; ?>
+            <?php wp_reset_postdata(); ?>
             <!-- end of the loop -->
  
             <!-- pagination here -->
  
-        <?php wp_reset_postdata(); ?>
+        
  
         <?php else : ?>
             <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
