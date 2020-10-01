@@ -33,8 +33,8 @@ class crp_widget extends WP_Widget {
         <!-- Display Output -->
         <?php 
         // the custom query
-        $query_args = array( 'cat'            => absint( $instance[ 'cat_display' ]),
-                             'posts_per_page' => absint( $instance[ 'number_of_posts' ])
+        $query_args = array( 'cat'            => absint( $instance[ 'cat_display' ] ),
+                             'posts_per_page' => absint( $instance[ 'number_of_posts' ] )
                              );
         $the_query = new WP_Query( $query_args ); ?>
  
@@ -120,6 +120,7 @@ class crp_widget extends WP_Widget {
         $instance            = array();
         $instance[ 'title' ] = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
         $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? absint( $new_instance[ 'number_of_posts' ] ) : '';
+        $instance[ 'cat_display' ] = ( ! empty( $new_instance[ 'cat_display' ] ) ) ? absint( $new_instance[ 'cat_display' ] ) : '';
         return $instance;
     }
 
