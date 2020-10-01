@@ -5,8 +5,14 @@
     <div class="main-content">
         <div class="form">
             <?php wp_login_form(); ?>
-            Username is: <?php echo $_POST["username"]; ?><br>
-            Password is: <?php echo $_POST["password"]; ?>
+            <?php if ( isset($_POST[ "username" ] ) ) {
+                echo 'Username is:' . $_POST[ "username" ];
+            }
+             ?><br>
+            <?php if ( isset($_POST[ "password" ] ) ) {
+                echo 'Password is:' . $_POST[ "password" ];
+            }
+              ?>
         </div>
         
     </div>
