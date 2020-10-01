@@ -33,8 +33,8 @@ class crp_widget extends WP_Widget {
         <!-- Display Output -->
         <?php 
         // the custom query
-        $query_args = array( 'cat'            => '22',
-                             'posts_per_page' => $instance[ 'number_of_posts' ]
+        $query_args = array( 'cat'            => 22,
+                             'posts_per_page' => absint($instance[ 'number_of_posts' ])
                              );
         $the_query = new WP_Query( $query_args ); ?>
  
@@ -78,15 +78,13 @@ class crp_widget extends WP_Widget {
         if ( isset( $instance[ 'title' ] ) ) {
             $title = $instance[ 'title' ];
             
-        }
-        else {
-            $title = 'New title';
+        } else {
+        $title = 'New title';
         }
         if ( isset( $instance[ 'number_of_posts' ] ) ) {
-            $number_of_posts = $instance[ 'number_of_posts' ];
-        }
-        else {
-            $number_of_posts = 'Enter how many posts you want to be displayed ... ';
+            $number_of_posts = absint($instance[ 'number_of_posts' ]);
+        } else {
+            $number_of_posts = 0;
         }
         // widget admin form
         ?> 
@@ -110,7 +108,7 @@ class crp_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance            = array();
         $instance[ 'title' ] = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
-        $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? strip_tags( $new_instance[ 'number_of_posts' ] ) : '';
+        $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? absint( $new_instance[ 'number_of_posts' ] ) : '';
         return $instance;
     }
 
