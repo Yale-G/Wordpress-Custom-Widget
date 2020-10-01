@@ -27,28 +27,29 @@ class crp_widget extends WP_Widget {
         if ( ! empty( $title ) ) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
-
-        ?>
-
-        <!-- Display Output -->
-        <?php 
+ 
         // the custom query
-        $query_args = array( 'cat'            => absint( $instance[ 'cat_display' ] ),
+        $query_args = array(
                              'posts_per_page' => absint( $instance[ 'number_of_posts' ] )
                              );
+        var_dump( $query_args );
+        if ( absint( $instance[ 'cat_display' ] ) > 0 ) {
+            $query_args[ 'cat' ] = absint( $instance[ 'cat_display' ] );
+        }  
         $the_query = new WP_Query( $query_args ); ?>
  
         <?php if ( $the_query->have_posts() ) : ?>
-           
-
-            <!-- pagination here -->
- 
+            
             <!-- the loop -->
             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                <?php if ( has_post_thumbnail() ) : the_post_thumbnail( 'thumbnail' ); ?>
-                <?php endif ?>
-                <a href="<?php the_permalink() ?>" rel="bookmark" title=" <?php the_title_attribute(); ?>">
-                <?php the_title(); ?></a>
+                <?php 
+                if ( has_post_thumbnail() ) { 
+                    the_post_thumbnail( 'thumbnail' );
+                } 
+                ?>
+                <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+                    <?php the_title(); ?>
+                </a>
                 <div class="post-dates">
                     <?php the_time('F j, Y') ?>
                 </div>
@@ -56,17 +57,9 @@ class crp_widget extends WP_Widget {
             <?php wp_reset_postdata(); ?>
             <!-- end of the loop -->
  
-            <!-- pagination here -->
- 
-        
- 
         <?php else : ?>
             <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
         <?php endif; ?>
-        
-
-
-
       
         <?php 
         echo $args['after_widget'];
@@ -106,11 +99,25 @@ class crp_widget extends WP_Widget {
                 value="<?php echo esc_attr( $number_of_posts ); ?>" />
 
             </p>
+            
+            <?php 
+            $terms = get_terms( 
+                array(
+                    'taxonomy'   => 'category',
+                    'hide_empty' => false,
+                )
+            );
+            // Inline if:
+            // condition ? true : false;
+            ?>
             <p>
-                <label for="<?php echo $this->get_field_id( 'cat_display' ); ?>"><?php _e( 'ID of category to show:' ); ?></label>
-                <input class="widefat" id="<?php echo $this->get_field_id( 'cat_display' ); ?>"
-                name="<?php echo $this->get_field_name( 'cat_display' ); ?>"
-                value="<?php echo esc_attr( $cat_display ); ?>" />
+                <label for="<?php echo $this->get_field_id( 'cat_display' ); ?>"><?php _e( 'Select category:' ); ?> </label>
+                <select name="<?php echo $this->get_field_name( 'cat_display' ) ?>" id="<?php echo $this->get_field_id( 'cat_display' )?>" class="widefat">
+                    <option value="0">--Pick a category--</option>
+                    <?php foreach ( $terms as $term ) { ?>
+                        <option value=<?php echo esc_attr( $term->term_id ) ?><?php echo $term->term_id === $cat_display ? ' selected="selected"' : ''; ?>><?php echo esc_html( $term->name ) ?></option>
+                    <?php  } ?> 
+                </select>
             </p>
         <?php    
     }
