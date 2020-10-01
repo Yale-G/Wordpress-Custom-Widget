@@ -79,10 +79,10 @@ class crp_widget extends WP_Widget {
             $title = $instance[ 'title' ];
             
         } else {
-        $title = 'New title';
+            $title = 'New title';
         }
         if ( isset( $instance[ 'number_of_posts' ] ) ) {
-            $number_of_posts = absint($instance[ 'number_of_posts' ]);
+            $number_of_posts = absint( $instance[ 'number_of_posts' ] );
         } else {
             $number_of_posts = 0;
         }
@@ -98,7 +98,7 @@ class crp_widget extends WP_Widget {
                 <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
                 <input class="widefat" id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" 
                 name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" 
-                <?php echo esc_attr( $number_of_posts ); ?> />
+                value="<?php echo esc_attr( $number_of_posts ); ?>" />
 
             </p>
         <?php    
