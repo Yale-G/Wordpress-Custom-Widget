@@ -33,8 +33,8 @@ class crp_widget extends WP_Widget {
         <!-- Display Output -->
         <?php 
         // the custom query
-        $query_args = array( 'cat'            => 22,
-                             'posts_per_page' => absint($instance[ 'number_of_posts' ])
+        $query_args = array( 'cat'            => absint( $instance[ 'cat_display' ]),
+                             'posts_per_page' => absint( $instance[ 'number_of_posts' ])
                              );
         $the_query = new WP_Query( $query_args ); ?>
  
@@ -86,6 +86,11 @@ class crp_widget extends WP_Widget {
         } else {
             $number_of_posts = 0;
         }
+        if ( isset( $instance[ 'cat_display' ] ) ) {
+            $cat_display = absint( $instance[ 'cat_display' ] );
+        } else {
+            $cat_display = 0;
+        }
         // widget admin form
         ?> 
             <p>
@@ -100,6 +105,12 @@ class crp_widget extends WP_Widget {
                 name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" 
                 value="<?php echo esc_attr( $number_of_posts ); ?>" />
 
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'cat_display' ); ?>"><?php _e( 'ID of category to show:' ); ?></label>
+                <input class="widefat" id="<?php echo $this->get_field_id( 'cat_display' ); ?>"
+                name="<?php echo $this->get_field_name( 'cat_display' ); ?>"
+                value="<?php echo esc_attr( $cat_display ); ?>" />
             </p>
         <?php    
     }
