@@ -118,9 +118,9 @@ class crp_widget extends WP_Widget {
     // Updating widget replace old instance with new 
     public function update( $new_instance, $old_instance ) {
         $instance            = array();
-        $instance[ 'title' ] = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
+        $instance[ 'title' ]           = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
         $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? absint( $new_instance[ 'number_of_posts' ] ) : '';
-        $instance[ 'cat_display' ] = ( ! empty( $new_instance[ 'cat_display' ] ) ) ? absint( $new_instance[ 'cat_display' ] ) : '';
+        $instance[ 'cat_display' ]     = ( ! empty( $new_instance[ 'cat_display' ] ) ) ? absint( $new_instance[ 'cat_display' ] ) : '';
         return $instance;
     }
 
