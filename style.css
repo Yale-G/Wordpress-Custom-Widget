@@ -206,14 +206,11 @@ body {
     float: left;
     width: 70%;
 }
-#recent-posts-3 span.post-date {
+#crp_widget-2 span.post-date {
     font-size: 10px;
     color: grey;
     width: 100%;
     display: block;
-}
-form#searchform.searchform {
-    
 }
 /* Search submit button */
 input#searchsubmit {
