@@ -34,7 +34,7 @@ class crp_widget extends WP_Widget {
         <?php 
         // the custom query
         $query_args = array( 'cat'            => '22',
-                             'posts_per_page' => '3'
+                             'posts_per_page' => $instance[ 'number_of_posts' ]
                              );
         $the_query = new WP_Query( $query_args ); ?>
  
@@ -82,11 +82,11 @@ class crp_widget extends WP_Widget {
         else {
             $title = 'New title';
         }
-        if ( isset( $instance[ 'tasos' ] ) ) {
-            $tasos = $instance[ 'tasos' ];
+        if ( isset( $instance[ 'number_of_posts' ] ) ) {
+            $number_of_posts = $instance[ 'number_of_posts' ];
         }
         else {
-            $tasos = 'Place your text here ... ';
+            $number_of_posts = 'Enter how many posts you want to be displayed ... ';
         }
         // widget admin form
         ?> 
@@ -97,9 +97,10 @@ class crp_widget extends WP_Widget {
                 type="text" value="<?php echo esc_attr( $title ); ?>" />
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id( 'tasos' ); ?>"><?php _e( 'Text:' ); ?></label>
-                <textarea class="widefat" id="<?php echo $this->get_field_id( 'tasos' ); ?>" 
-                name="<?php echo $this->get_field_name( 'tasos' ); ?>" ><?php echo esc_attr( $tasos ); ?></textarea>
+                <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+                <input class="widefat" id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" 
+                name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" 
+                <?php echo esc_attr( $number_of_posts ); ?> />
 
             </p>
         <?php    
@@ -109,7 +110,7 @@ class crp_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance            = array();
         $instance[ 'title' ] = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
-        $instance[ 'tasos' ] = ( ! empty( $new_instance[ 'tasos' ] ) ) ? strip_tags( $new_instance[ 'tasos' ] ) : '';
+        $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? strip_tags( $new_instance[ 'number_of_posts' ] ) : '';
         return $instance;
     }
 
