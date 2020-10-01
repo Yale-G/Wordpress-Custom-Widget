@@ -33,8 +33,8 @@ class crp_widget extends WP_Widget {
         <!-- Display Output -->
         <?php 
         // the custom query
-        $query_args = array( 'cat'            => '22',
-                             'posts_per_page' => '3'
+        $query_args = array( 'cat'            => absint( $instance[ 'cat_display' ] ),
+                             'posts_per_page' => absint( $instance[ 'number_of_posts' ] )
                              );
         $the_query = new WP_Query( $query_args ); ?>
  
@@ -78,15 +78,18 @@ class crp_widget extends WP_Widget {
         if ( isset( $instance[ 'title' ] ) ) {
             $title = $instance[ 'title' ];
             
-        }
-        else {
+        } else {
             $title = 'New title';
         }
-        if ( isset( $instance[ 'tasos' ] ) ) {
-            $tasos = $instance[ 'tasos' ];
+        if ( isset( $instance[ 'number_of_posts' ] ) ) {
+            $number_of_posts = absint( $instance[ 'number_of_posts' ] );
+        } else {
+            $number_of_posts = 0;
         }
-        else {
-            $tasos = 'Place your text here ... ';
+        if ( isset( $instance[ 'cat_display' ] ) ) {
+            $cat_display = absint( $instance[ 'cat_display' ] );
+        } else {
+            $cat_display = 0;
         }
         // widget admin form
         ?> 
@@ -97,10 +100,17 @@ class crp_widget extends WP_Widget {
                 type="text" value="<?php echo esc_attr( $title ); ?>" />
             </p>
             <p>
-                <label for="<?php echo $this->get_field_id( 'tasos' ); ?>"><?php _e( 'Text:' ); ?></label>
-                <textarea class="widefat" id="<?php echo $this->get_field_id( 'tasos' ); ?>" 
-                name="<?php echo $this->get_field_name( 'tasos' ); ?>" ><?php echo esc_attr( $tasos ); ?></textarea>
+                <label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+                <input class="widefat" id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" 
+                name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" 
+                value="<?php echo esc_attr( $number_of_posts ); ?>" />
 
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'cat_display' ); ?>"><?php _e( 'ID of category to show:' ); ?></label>
+                <input class="widefat" id="<?php echo $this->get_field_id( 'cat_display' ); ?>"
+                name="<?php echo $this->get_field_name( 'cat_display' ); ?>"
+                value="<?php echo esc_attr( $cat_display ); ?>" />
             </p>
         <?php    
     }
@@ -108,8 +118,9 @@ class crp_widget extends WP_Widget {
     // Updating widget replace old instance with new 
     public function update( $new_instance, $old_instance ) {
         $instance            = array();
-        $instance[ 'title' ] = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
-        $instance[ 'tasos' ] = ( ! empty( $new_instance[ 'tasos' ] ) ) ? strip_tags( $new_instance[ 'tasos' ] ) : '';
+        $instance[ 'title' ]           = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
+        $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? absint( $new_instance[ 'number_of_posts' ] ) : '';
+        $instance[ 'cat_display' ]     = ( ! empty( $new_instance[ 'cat_display' ] ) ) ? absint( $new_instance[ 'cat_display' ] ) : '';
         return $instance;
     }
 
