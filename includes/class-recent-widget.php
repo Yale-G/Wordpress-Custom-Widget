@@ -36,6 +36,9 @@ class crp_widget extends WP_Widget {
         if ( absint( $instance[ 'cat_display' ] ) > 0 ) {
             $query_args[ 'cat' ] = absint( $instance[ 'cat_display' ] );
         }  
+        if ( absint( $instance[ 'tag_display' ] ) > 0 ) {
+            $query_args[ 'tag_id' ] = absint( $instance[ 'tag_display' ] );
+        }
         $the_query = new WP_Query( $query_args ); ?>
  
         <?php if ( $the_query->have_posts() ) : ?>
@@ -84,6 +87,11 @@ class crp_widget extends WP_Widget {
         } else {
             $cat_display = 0;
         }
+        if ( isset( $instance[ 'tag_display' ] ) ) {
+            $tag_display = absint( $instance[ 'tag_display' ] );
+        } else {
+            $tag_display = 0;
+        }
         // widget admin form
         ?> 
             <p>
@@ -119,6 +127,25 @@ class crp_widget extends WP_Widget {
                     <?php  } ?> 
                 </select>
             </p>
+            <?php 
+            $tag_terms = get_terms( 
+                array(
+                    'taxonomy'   => 'post_tag',
+                    'hide_empty' => false,
+                )
+            );
+            // Inline if:
+            // condition ? true : false;
+            ?>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'tag_display' ); ?>"><?php _e( 'Select tags:' ); ?> </label>
+                <select name="<?php echo $this->get_field_name( 'tag_display' ) ?>" id="<?php echo $this->get_field_id( 'tag_display' )?>" class="widefat">
+                    <option value="0">--Pick a tag--</option>
+                    <?php foreach ( $tag_terms as $term ) { ?>
+                        <option value=<?php echo esc_attr( $term->term_id ) ?><?php echo $term->term_id === $tag_display ? ' selected="selected"' : ''; ?>><?php echo esc_html( $term->name ) ?></option>
+                    <?php  } ?> 
+                </select>
+            </p>
         <?php    
     }
 
@@ -128,6 +155,7 @@ class crp_widget extends WP_Widget {
         $instance[ 'title' ]           = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
         $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? absint( $new_instance[ 'number_of_posts' ] ) : '';
         $instance[ 'cat_display' ]     = ( ! empty( $new_instance[ 'cat_display' ] ) ) ? absint( $new_instance[ 'cat_display' ] ) : '';
+        $instance[ 'tag_display' ]     = ( ! empty( $new_instance[ 'tag_display' ] ) ) ? absint( $new_instance[ 'tag_display' ] ) : '';
         return $instance;
     }
 
