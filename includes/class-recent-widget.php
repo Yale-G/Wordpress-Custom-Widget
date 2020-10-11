@@ -46,9 +46,12 @@ class crp_widget extends WP_Widget {
             <!-- the loop -->
             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <?php 
-                if ( has_post_thumbnail() ) { 
-                    the_post_thumbnail( 'thumbnail' );
-                } 
+                
+                    if ( has_post_thumbnail() ) { 
+                        the_post_thumbnail( 'thumbnail' );
+                    } 
+                
+                
                 ?>
                 <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
                     <?php the_title(); ?>
@@ -92,6 +95,11 @@ class crp_widget extends WP_Widget {
         } else {
             $tag_display = 0;
         }
+        if ( isset( $thumb_display ) ) {
+            $thumb_display = true;
+        } else {
+            $thumb_display = false;
+        }
         // widget admin form
         ?> 
             <p>
@@ -134,6 +142,7 @@ class crp_widget extends WP_Widget {
                     'hide_empty' => false,
                 )
             );
+            
             // Inline if:
             // condition ? true : false;
             ?>
@@ -146,16 +155,26 @@ class crp_widget extends WP_Widget {
                     <?php  } ?> 
                 </select>
             </p>
+            <!-- thumbnail selection  -->
+            <p>
+                <label> <?php _e( 'Show thumbnail: ') ?> </label>
+                <select class="widefat">
+                    <option value=<?php  $thumb_display = true ?><?php 'selected="selected"' ?>> Yes </option>
+                    <option value=<?php 'selected="selected"' ?>> No </option>
+                </select>   
+                <?php var_dump($thumb_display); ?>
+            </p>
         <?php    
     }
 
     // Updating widget replace old instance with new 
     public function update( $new_instance, $old_instance ) {
-        $instance            = array();
+        $instance                      = array();
         $instance[ 'title' ]           = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
         $instance[ 'number_of_posts' ] = ( ! empty( $new_instance[ 'number_of_posts' ] ) ) ? absint( $new_instance[ 'number_of_posts' ] ) : '';
         $instance[ 'cat_display' ]     = ( ! empty( $new_instance[ 'cat_display' ] ) ) ? absint( $new_instance[ 'cat_display' ] ) : '';
         $instance[ 'tag_display' ]     = ( ! empty( $new_instance[ 'tag_display' ] ) ) ? absint( $new_instance[ 'tag_display' ] ) : '';
+        $instance[ 'thumb_display' ]   = ( ! empty( $new_instance[ 'thumb_display' ] ) ) ? ( $new_instance[ 'thumb_display' ] ) : '';
         return $instance;
     }
 
