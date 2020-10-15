@@ -46,11 +46,11 @@ class crp_widget extends WP_Widget {
             <!-- the loop -->
             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <?php 
-                
-                    if ( has_post_thumbnail() ) { 
-                        the_post_thumbnail( 'thumbnail' );
-                    } 
-                
+                    if ( absint( $instance[ 'thumb_display' ] ) == 1 ) {
+                        if ( has_post_thumbnail() ) { 
+                            the_post_thumbnail( 'thumbnail' );
+                        } 
+                    }
                 
                 ?>
                 <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
@@ -95,10 +95,10 @@ class crp_widget extends WP_Widget {
         } else {
             $tag_display = 0;
         }
-        if ( isset( $thumb_display ) ) {
-            $thumb_display = true;
+        if ( isset( $instance[ 'thumb_display'] ) ) {
+            $thumb_display = absint( $instance[ 'thumb_display' ] );
         } else {
-            $thumb_display = false;
+            $thumb_display = 0;
         }
         // widget admin form
         ?> 
@@ -157,12 +157,11 @@ class crp_widget extends WP_Widget {
             </p>
             <!-- thumbnail selection  -->
             <p>
-                <label> <?php _e( 'Show thumbnail: ') ?> </label>
-                <select class="widefat">
-                    <option value=<?php  $thumb_display = true ?><?php 'selected="selected"' ?>> Yes </option>
-                    <option value=<?php 'selected="selected"' ?>> No </option>
+                <label for="<?php echo $this->get_field_id( 'thumb_display' ); ?>"><?php _e( 'Show thumbnail: ') ?> </label>
+                <select name="<?php echo $this->get_field_name( 'thumb_display' ) ?>" id="<?php echo $this->get_field_id( 'thumb_display' )?>" class="widefat">
+                    <option value="1"> Yes </option>
+                    <option value="0"> No </option>
                 </select>   
-                <?php var_dump($thumb_display); ?>
             </p>
         <?php    
     }
