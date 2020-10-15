@@ -157,11 +157,11 @@ class crp_widget extends WP_Widget {
             </p>
             <!-- thumbnail selection  -->
             <p>
-                <label for="<?php echo $this->get_field_id( 'thumb_display' ); ?>"><?php _e( 'Show thumbnail: ') ?> </label>
-                <select name="<?php echo $this->get_field_name( 'thumb_display' ) ?>" id="<?php echo $this->get_field_id( 'thumb_display' )?>" class="widefat">
-                    <option value="1"> Yes </option>
-                    <option value="0"> No </option>
-                </select>   
+                <label for="<?php echo $this->get_field_id( 'thumb_display' ); ?>"><?php _e( 'Show thumbnail: ') ?> </label> <br/>
+                <input type="checkbox" name="<?php echo $this->get_field_name( 'thumb_display' ) ?>" id="<?php echo $this->get_field_id( 'thumb_display' )?>" class="widefat"
+                     value="1"> Yes <br/>   
+                <input type="checkbox" name="<?php echo $this->get_field_name( 'thumb_display' ) ?>" id="<?php echo $this->get_field_id( 'thumb_display' )?>" class="widefat"
+                     value="0"> No <br/>
             </p>
         <?php    
     }
