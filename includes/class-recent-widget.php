@@ -159,9 +159,7 @@ class crp_widget extends WP_Widget {
             <p>
                 <label for="<?php echo $this->get_field_id( 'thumb_display' ); ?>"><?php _e( 'Show thumbnail: ') ?> </label> <br/>
                 <input type="checkbox" name="<?php echo $this->get_field_name( 'thumb_display' ) ?>" id="<?php echo $this->get_field_id( 'thumb_display' )?>" class="widefat"
-                     value="1"> Yes <br/>   
-                <input type="checkbox" name="<?php echo $this->get_field_name( 'thumb_display' ) ?>" id="<?php echo $this->get_field_id( 'thumb_display' )?>" class="widefat"
-                     value="0"> No <br/>
+                     value="1" <?php echo (isset( $instance[ 'thumb_display' ] ) ) && !empty( $instance[ 'thumb_display' ] ) ? 'checked="checked"' : '' ; ?>> Yes <br/>   
             </p>
         <?php    
     }
